@@ -1,0 +1,15 @@
+server:
+  port: 8801
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      username: admin
+      password: admin
+      database: oj_case
+      port: 27017
+      authentication-database: admin
+  servlet:
+    multipart:
+      max-file-size: 2MB
