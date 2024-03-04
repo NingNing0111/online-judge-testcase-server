@@ -1,5 +1,6 @@
 package com.ningning0111.controller;
 
+import com.ningning0111.annotation.AuthCheck;
 import com.ningning0111.model.dto.TestCaseRequest;
 import com.ningning0111.model.enums.BaseResponse;
 import com.ningning0111.model.enums.ErrorCode;
@@ -26,6 +27,7 @@ public class TestCaseController {
     private final TestCaseService testCaseService;
 
     @PostMapping("/add")
+    @AuthCheck
     public BaseResponse add(@RequestBody TestCaseRequest request){
         if(request == null){
             return ResultUtils.error(ErrorCode.PARAMS_ERROR,"参数不能为空");
@@ -34,15 +36,18 @@ public class TestCaseController {
     }
 
     @PostMapping("/addFile")
+    @AuthCheck
     public BaseResponse add(MultipartFile caseFile){
         return testCaseService.saveTestCaseByFile(caseFile);
     }
 
+    @AuthCheck
     @GetMapping("/{questionId}")
     public BaseResponse find(@PathVariable Long questionId){
         return testCaseService.queryTestCase(questionId);
     }
 
+    @AuthCheck
     @DeleteMapping("/{questionId}")
     public BaseResponse delete(@PathVariable Long questionId){
         return testCaseService.deleteTestCase(questionId);
