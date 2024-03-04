@@ -19,6 +19,11 @@
 
 ![img.png](doc/images/5.png)
 
-## ToDo
+- 支持简单的身份校验
 
-- 添加身份校验功能
+> 使用AOP对接口进行简单的身份校验。可通过配置文件配置系统密钥
+
+![img.png](doc/images/6.png)
+
+![img.png](doc/images/7.png)
+
