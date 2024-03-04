@@ -43,4 +43,9 @@ public class MongoDBTest {
         TestCase testCase = repository.queryTestCaseByQuestionId(1000L);
         System.out.println(testCase);
     }
+
+    @Test
+    public void test4() {
+        repository.deleteTestCaseByQuestionId(1000L);
+    }
 }

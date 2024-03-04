@@ -4,9 +4,9 @@ server:
 spring:
   data:
     mongodb:
-      host: localhost
-      username: admin
-      password: admin
+      host: ${MONGO_DB_HOST:localhost}
+      username: ${MONGO_DB_USERNAME:admin}
+      password: ${MONGO_DB_PASSWORD:admin}
       database: oj_case
       port: 27017
       authentication-database: admin
@@ -14,4 +14,4 @@ spring:
     multipart:
       max-file-size: 2MB
 case:
-  secret-key: 123123
+  secret-key: ${SECRET_KEY:}

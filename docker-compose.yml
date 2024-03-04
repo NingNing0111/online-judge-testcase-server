@@ -1,10 +1,33 @@
 version: '3'
 services:
+
   mongodb:
     image: mongo:latest
     restart: always
+    container_name: testcase_db
     ports:
-      - 27017:27017
+      - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin
+    networks:
+      - testcase-network
+
+  test-case-system:
+    image: ningning0111/oj-testcase-system
+    restart: always
+    container_name: testcase_server
+    ports:
+      - "8801:8801"
+    environment:
+      MONGO_DB_HOST: testcase_db
+      MONGO_DB_USERNAME: admin # 和上面设置的MongoDB用户名和密码保持一致
+      MONGO_DB_PASSWORD: admin
+#      SECRET_KEY: 123122 # 服务接口密钥 调用接口时需要使用在请求头设置(auth:secret_key)
+
+    networks:
+      - testcase-network
+
+networks:
+  testcase-network:
+    driver: bridge
